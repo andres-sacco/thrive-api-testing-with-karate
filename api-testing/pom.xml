@@ -10,9 +10,13 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>21</java.version>
-        <maven.compiler.version>3.8.1</maven.compiler.version>
-        <maven.surefire.version>2.22.2</maven.surefire.version>        
+
         <karate.version>1.4.0</karate.version>
+        <junit-jupiter-engine.version>5.7.0</junit-jupiter-engine.version>
+        <cucumber-reporting.version>5.7.1</cucumber-reporting.version>
+
+        <maven.compiler.version>3.8.1</maven.compiler.version>
+        <maven.surefire.version>3.2.2</maven.surefire.version>
     </properties>    
 
     <dependencies>
@@ -23,10 +27,19 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- Cucumber reporting -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter-engine.version}</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
-            <version>5.7.1</version> <!-- Use the latest version -->
+            <version>${cucumber-reporting.version}</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
