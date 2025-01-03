@@ -1,19 +1,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
- 
+
     <groupId>com.twa</groupId>
     <artifactId>api-testing</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
- 
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>21</java.version>
-        <maven.compiler.version>3.8.1</maven.compiler.version>
-        <maven.surefire.version>2.22.2</maven.surefire.version>        
+
         <karate.version>1.4.0</karate.version>
-    </properties>    
+        <junit-jupiter-engine.version>5.7.0</junit-jupiter-engine.version>
+        <cucumber-reporting.version>5.7.1</cucumber-reporting.version>
+
+        <maven.compiler.version>3.8.1</maven.compiler.version>
+        <maven.surefire.version>3.2.2</maven.surefire.version>
+    </properties>
 
     <dependencies>
         <dependency>
@@ -25,25 +29,19 @@
 
         <!-- Cucumber reporting -->
         <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>${junit-jupiter-engine.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
             <groupId>net.masterthought</groupId>
             <artifactId>cucumber-reporting</artifactId>
-            <version>5.7.1</version>
+            <version>${cucumber-reporting.version}</version>
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.1</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>7.5</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -74,8 +72,8 @@
                 <configuration>
                     <argLine>-Dfile.encoding=UTF-8</argLine>
                 </configuration>
-            </plugin>          
-        </plugins>        
-    </build>       
-    
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
