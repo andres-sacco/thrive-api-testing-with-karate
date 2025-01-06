@@ -4,5 +4,6 @@ Feature: Reservation
     Given url reservationUrl + '/2'
     And header Content-Type = 'application/json'
     When method GET
+    # Must return an exception
     Then status 404
     And match header Content-Type == 'application/json'
