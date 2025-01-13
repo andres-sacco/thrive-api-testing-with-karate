@@ -5,7 +5,7 @@ Feature: Reservation
 
   Scenario: Get an existent reservation
     * def responseBody = read('./response/get-reservation-response-ok.json')
-    Given url reservationUrl + '/677c3aaaf8e3fa4fc2f6a830'
+    Given url reservationUrl + '/67856ed29466111c9b84fb30'
     And header Content-Type = contentType
     When method GET
     Then status 200
