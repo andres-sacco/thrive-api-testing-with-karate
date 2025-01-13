@@ -1,6 +1,6 @@
 Feature: Reservation
 
-  Scenario: Create an existent reservation
+  Scenario: Create non existent reservation
     Given url reservationUrl + '/677c3aaaf8e3fa4fc2f6a831'
     And header Content-Type = 'application/json'
     And request
