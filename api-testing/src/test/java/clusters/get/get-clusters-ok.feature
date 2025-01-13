@@ -6,3 +6,4 @@ Feature: Clusters
     When method GET
     Then status 200
     And match header Content-Type == 'application/json'
+    And match response contains { itineraries: '#array' }

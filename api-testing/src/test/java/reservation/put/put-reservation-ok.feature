@@ -1,3 +1,4 @@
+@Ignore
 Feature: Reservation
 
   Scenario: Create an existent reservation

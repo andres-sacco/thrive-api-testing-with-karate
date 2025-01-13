@@ -6,3 +6,4 @@ Feature: Reservation
     When method DELETE
     Then status 404
     And match header Content-Type == 'application/json'
+    And match response == {"description":"Reservation not found","reasons":null}

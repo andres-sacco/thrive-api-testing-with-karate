@@ -6,3 +6,5 @@ Feature: Clusters
     When method GET
     Then status 400
     And match header Content-Type == 'application/json'
+    And match response.code == 4000209
+    And match response.shortDescription == "you cannot make a search in the past"

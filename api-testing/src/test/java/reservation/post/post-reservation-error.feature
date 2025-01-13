@@ -23,3 +23,4 @@ Feature: Reservation
     When method POST
     Then status 400
     And match header Content-Type == 'application/json'
+    And match response == {"description":"The are attributes with wrong values","reasons":null}

@@ -24,3 +24,4 @@ Feature: Reservation
     When method PUT
     Then status 404
     And match header Content-Type == 'application/json'
+    And match response == {"description":"Reservation not found","reasons":null}
