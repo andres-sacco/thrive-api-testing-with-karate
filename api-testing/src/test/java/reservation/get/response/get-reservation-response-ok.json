@@ -1,1 +1,15 @@
-{"description":"Reservation not found","reasons":null}
+{
+  "id": "67856ed29466111c9b84fb30",
+  "passengers": [
+    {
+      "firstName": "Andres",
+      "lastName": "Sacco",
+      "documentNumber": "31258454",
+      "documentType": "PASSPORT",
+      "birthday": "1985-03-01",
+      "nationality": "AR"
+    }
+  ],
+  "itineraryId": "#string",
+  "searchId": "#string"
+}
