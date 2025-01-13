@@ -1,7 +1,7 @@
 Feature: Reservation
 
-  Scenario: Get an existent reservation
-    Given url reservationUrl + '/677c3aaaf8e3fa4fc2f6a830'
+  Scenario: Get all the existent reservations
+    Given url reservationUrl + '/'
     And header Content-Type = 'application/json'
     When method GET
     Then status 200
