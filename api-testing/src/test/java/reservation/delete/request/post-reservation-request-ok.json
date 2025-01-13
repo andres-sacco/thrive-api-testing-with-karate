@@ -1,0 +1,14 @@
+{
+  "itineraryId": "itineraryId",
+  "searchId": "searchId",
+  "passengers": [
+    {
+      "firstName": "Andres",
+      "lastName": "Sacco",
+      "documentNumber": "31434282",
+      "documentType": "PASSPORT",
+      "birthday": "1985-03-01",
+      "nationality": "AR"
+    }
+  ]
+}

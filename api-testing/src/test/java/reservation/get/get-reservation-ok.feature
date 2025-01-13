@@ -1,9 +1,13 @@
 Feature: Reservation
 
+  Background:
+    * def contentType = 'application/json'
+
   Scenario: Get an existent reservation
+    * def responseBody = read('./response/get-reservation-response-ok.json')
     Given url reservationUrl + '/677c3aaaf8e3fa4fc2f6a830'
-    And header Content-Type = 'application/json'
+    And header Content-Type = contentType
     When method GET
     Then status 200
-    And match header Content-Type == 'application/json'
-    And match response == {"id":"677c3aaaf8e3fa4fc2f6a830","passengers":[{"firstName":"Andres","lastName":"Sacco","documentNumber":"31258454","documentType":"PASSPORT","birthday":"1985-03-01","nationality":"#regex^[A-Z]{2}$"}],"itineraryId":"#string","searchId":"#string"}
+    And match header Content-Type == contentType
+    And match response == responseBody

@@ -1,0 +1,14 @@
+{
+  "passengers": [
+    {
+      "firstName": "Andres",
+      "lastName": "Sacco",
+      "documentNumber": "31258454",
+      "documentType": "PASSPORT",
+      "birthday": "#string",
+      "nationality": "AR"
+    }
+  ],
+  "itineraryId": "#string",
+  "searchId": "#string"
+}

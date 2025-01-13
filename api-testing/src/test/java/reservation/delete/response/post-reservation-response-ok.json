@@ -1,0 +1,15 @@
+{
+  "id": "#string",
+  "passengers": [
+    {
+      "firstName": "Andres",
+      "lastName": "Sacco",
+      "documentNumber": "31434282",
+      "documentType": "PASSPORT",
+      "birthday": "1985-03-01",
+      "nationality": "#regex^[A-Z]{2}$"
+    }
+  ],
+  "itineraryId": "#string",
+  "searchId": "#string"
+}
