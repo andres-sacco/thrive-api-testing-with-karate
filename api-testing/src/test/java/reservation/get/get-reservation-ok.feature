@@ -6,4 +6,4 @@ Feature: Reservation
     When method GET
     Then status 200
     And match header Content-Type == 'application/json'
-    And match response == {"id":"67856ed29466111c9b84fb30","passengers":[{"firstName":"Andres","lastName":"Sacco","documentNumber":"31258454","documentType":"PASSPORT","birthday":"1985-03-01","nationality":"#regex^[A-Z]{2}$"}],"itineraryId":"#string","searchId":"#string"}
+    And match response == {"id":"67856ed29466111c9b84fb30","passengers":[{"firstName":"Andres","lastName":"Sacco","documentNumber":"31434282","documentType":"PASSPORT","birthday":"1985-03-01","nationality":"#regex^[A-Z]{2}$"}],"itineraryId":"#string","searchId":"#string"}
