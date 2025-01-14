@@ -1,20 +1,26 @@
-@Ignore
 Feature: Reservation
 
   Scenario: Modify an existent reservation
-    Given url reservationUrl + '/677c3aaaf8e3fa4fc2f6a830'
+
+    # Do a search to obtain itineraries
+    Given url clustersUrl + '/itineraries?from=BUE%2CMIA&to=MIA%2CBUE&departure=2025-07-28%2C2025-08-03&adults=1&children=1&infants=1&amount=10'
     And header Content-Type = 'application/json'
-    And request
+    When method GET
+    Then status 200
+    And match header Content-Type == 'application/json'
+
+    # Modify a reservation
+    * def requestBody =
       """
       {
-        "id": "677c3aaaf8e3fa4fc2f6a830",
-        "itineraryId": "7108ad38-a745-409a-a6ca-14c6bb691cdb",
-        "searchId": "TWA_g=2025-01-13T13:54:03.284809_f=BUE,MIA_t=MIA,BUE_d=2025-09-29,2025-10-03_a=1_c=1_i=1",
+        "id": "67856ed29466111c9b84fb30",
+        "itineraryId": itineraryId,
+        "searchId": searchId,
         "passengers": [
           {
             "firstName": "Andres",
             "lastName": "Sacco",
-            "documentNumber": "31258454",
+            "documentNumber": "31434282",
             "documentType": "PASSPORT",
             "birthday": "1985-03-01",
             "nationality": "AR"
@@ -22,20 +28,26 @@ Feature: Reservation
         ]
       }
       """
+    * requestBody.searchId = response.id
+    * requestBody.itineraryId = response.itineraries[0].id
+
+    Given url reservationUrl + '/67856ed29466111c9b84fb30'
+    And header Content-Type = 'application/json'
+    And request requestBody
     When method PUT
     Then status 200
     And match header Content-Type == 'application/json'
     And match response ==
       """
       {
-        "id": "677c3aaaf8e3fa4fc2f6a830",
-        "itineraryId": "7108ad38-a745-409a-a6ca-14c6bb691cdb",
-        "searchId": "TWA_g=2025-01-13T13:54:03.284809_f=BUE,MIA_t=MIA,BUE_d=2025-09-29,2025-10-03_a=1_c=1_i=1",
+        "id": "67856ed29466111c9b84fb30",
+        "itineraryId": "#string",
+        "searchId": "#string",
         "passengers": [
           {
             "firstName": "Andres",
             "lastName": "Sacco",
-            "documentNumber": "31258454",
+            "documentNumber": "31434282",
             "documentType": "PASSPORT",
             "birthday": "1985-03-01",
             "nationality": "AR"
