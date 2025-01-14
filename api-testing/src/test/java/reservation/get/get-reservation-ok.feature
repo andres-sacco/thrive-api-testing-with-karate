@@ -11,3 +11,4 @@ Feature: Reservation
     Then status 200
     And match header Content-Type == contentType
     And match response == responseBody
+
