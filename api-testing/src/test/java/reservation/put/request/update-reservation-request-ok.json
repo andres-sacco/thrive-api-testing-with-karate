@@ -1,5 +1,7 @@
 {
   "id": "678900d78e1f5c20e259434c",
+  "itineraryId": itineraryId,
+  "searchId": searchId,
   "passengers": [
     {
       "firstName": "Andres",
@@ -9,7 +11,5 @@
       "birthday": "1985-03-01",
       "nationality": "AR"
     }
-  ],
-  "itineraryId": "#string",
-  "searchId": "#string"
+  ]
 }
