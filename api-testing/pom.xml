@@ -14,45 +14,15 @@
         <karate.version>1.4.0</karate.version>
         <junit-jupiter-engine.version>5.7.0</junit-jupiter-engine.version>
         <cucumber-reporting.version>5.7.1</cucumber-reporting.version>
+        <scala.version>3.4.2</scala.version>
 
+        <gatling.plugin.version>4.9.6</gatling.plugin.version>
+        <scala-maven-plugin.version>4.9.2</scala-maven-plugin.version>
         <maven.compiler.version>3.8.1</maven.compiler.version>
         <maven.surefire.version>3.2.2</maven.surefire.version>
-    </properties>    
-
-    <dependencies>
-        <dependency>
-            <groupId>com.intuit.karate</groupId>
-            <artifactId>karate-junit5</artifactId>
-            <version>${karate.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- Cucumber reporting -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit-jupiter-engine.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>net.masterthought</groupId>
-            <artifactId>cucumber-reporting</artifactId>
-            <version>${cucumber-reporting.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-    </dependencies>
+    </properties>
 
     <build>
-        <testResources>
-            <testResource>
-                <directory>src/test/java</directory>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </testResource>
-        </testResources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -65,15 +35,153 @@
                     <compilerArgument>-Werror</compilerArgument>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${maven.surefire.version}</version>
-                <configuration>
-                    <argLine>-Dfile.encoding=UTF-8</argLine>
-                </configuration>
-            </plugin>          
-        </plugins>        
-    </build>       
-    
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>karate</id>
+            <dependencies>
+                <!-- Karate -->
+                <dependency>
+                    <groupId>com.intuit.karate</groupId>
+                    <artifactId>karate-junit5</artifactId>
+                    <version>${karate.version}</version>
+                    <scope>test</scope>
+                </dependency>
+
+                <!-- Cucumber reporting -->
+                <dependency>
+                    <groupId>org.junit.jupiter</groupId>
+                    <artifactId>junit-jupiter-engine</artifactId>
+                    <version>${junit-jupiter-engine.version}</version>
+                    <scope>test</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>net.masterthought</groupId>
+                    <artifactId>cucumber-reporting</artifactId>
+                    <version>${cucumber-reporting.version}</version>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <testResources>
+                    <testResource>
+                        <directory>src/test/java</directory>
+                        <excludes>
+                            <exclude>**/*.java</exclude>
+                        </excludes>
+                    </testResource>
+                </testResources>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${maven.surefire.version}</version>
+                        <configuration>
+                            <argLine>-Dfile.encoding=UTF-8</argLine>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <id>gatling</id>
+            <dependencies>
+                <!-- Karate -->
+                <dependency>
+                    <groupId>com.intuit.karate</groupId>
+                    <artifactId>karate-junit5</artifactId>
+                    <version>${karate.version}</version>
+                    <scope>test</scope>
+                </dependency>
+
+                <!-- Cucumber reporting -->
+                <dependency>
+                    <groupId>org.junit.jupiter</groupId>
+                    <artifactId>junit-jupiter-engine</artifactId>
+                    <version>${junit-jupiter-engine.version}</version>
+                    <scope>test</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>net.masterthought</groupId>
+                    <artifactId>cucumber-reporting</artifactId>
+                    <version>${cucumber-reporting.version}</version>
+                    <scope>test</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.scala-lang</groupId>
+                    <artifactId>scala3-library_3</artifactId>
+                    <version>${scala.version}</version>
+                    <scope>test</scope>
+                </dependency>
+
+
+                <dependency>
+                    <groupId>com.intuit.karate</groupId>
+                    <artifactId>karate-gatling</artifactId>
+                    <version>${karate.version}</version>
+                    <scope>test</scope>
+                </dependency>
+
+            </dependencies>
+            <build>
+                <testResources>
+                    <testResource>
+                        <directory>src/test/java</directory>
+                        <excludes>
+                            <exclude>**/*.java</exclude>
+                        </excludes>
+                    </testResource>
+                </testResources>
+                <plugins>
+                    <plugin>
+                        <groupId>net.alchim31.maven</groupId>
+                        <artifactId>scala-maven-plugin</artifactId>
+                        <version>${scala-maven-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>testCompile</goal>
+                                </goals>
+                                <configuration>
+                                    <args>
+                                        <arg>-Jbackend:GenBCode</arg>
+                                        <arg>-Jdelambdafy:method</arg>
+                                        <arg>-target:jvm-1.8</arg>
+                                        <arg>-deprecation</arg>
+                                        <arg>-feature</arg>
+                                        <arg>-unchecked</arg>
+                                        <arg>-language:implicitConversions</arg>
+                                        <arg>-language:postfixOps</arg>
+                                    </args>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>io.gatling</groupId>
+                        <artifactId>gatling-maven-plugin</artifactId>
+                        <version>${gatling.plugin.version}</version>
+                        <configuration>
+                            <simulationsFolder>src/test/java</simulationsFolder>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
 </project>

@@ -73,7 +73,7 @@ services:
     restart: always
 
   api-reservations:
-    image: adschosen/api-reservations-mongo:1.0.0
+    image: adschosen/api-reservations-mongo:1.2.0
     container_name: api-reservations
     ports:
       - 3070:3070
