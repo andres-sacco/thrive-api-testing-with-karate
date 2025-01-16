@@ -23,9 +23,24 @@ class GetReservationSimulation extends Simulation {
 
   setUp(
     get.inject(
-      // Simple
-      rampUsers(10) during (5 seconds) // increment the number of users
+      // Single User Load
+      atOnceUsers(5)
 
+      // Gradual Ramp-Up
+      //rampUsers(10) during (5 seconds) // Increment 10 users over 5 seconds
+
+      // Constant Users Per Second
+      //constantUsersPerSec(10) during (5 seconds) // 10 users per second for 5 seconds
+
+      // Spike Load
+      //nothingFor(5 seconds),  // Wait 5 seconds
+      //atOnceUsers(10)         // Add 10 users at once
+
+      // Stress test
+      // incrementUsersPerSec(5) // Start with 5 users per second
+      //  .times(10)            // Increase in 10 steps
+      // .eachLevelLasting(10 seconds) // Each step lasts 10 seconds
+      //  .startingFrom(10)     // Begin from 10 users per second
     ).protocols(protocol)
   ).assertions(
     // Response time validations
