@@ -2,6 +2,13 @@ Feature: Data Tables
 
   Background:
     * def contentType = 'application/json'
+    * print 'Before each test'
+    * configure afterScenario =
+      """
+      function(){
+        karate.log('after scenario:', karate.scenario.name);
+      }
+      """
 
   @error
   Scenario Outline: Get a non existent reservation using datatables with id '<id>'
