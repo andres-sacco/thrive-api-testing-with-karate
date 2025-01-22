@@ -3,6 +3,7 @@ Feature: Data Tables
   Background:
     * def contentType = 'application/json'
 
+  @error
   Scenario Outline: Get a non existent reservation using datatables with id '<id>'
     # Obtain token
     Given url "http://jwtbuilder.jamiekurtz.com/tokens"

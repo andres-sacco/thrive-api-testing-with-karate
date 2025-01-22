@@ -3,6 +3,7 @@ Feature: Reservation
   Background:
     * def contentType = 'application/json'
 
+  @success
   Scenario: Get all the existent reservations
     # Obtain token
     Given url "http://jwtbuilder.jamiekurtz.com/tokens"

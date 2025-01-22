@@ -3,6 +3,7 @@ Feature: Reservation
   Background:
     * def contentType = 'application/json'
 
+  @error
   Scenario: Delete a non existent reservation
     # Obtain token
     Given url "http://jwtbuilder.jamiekurtz.com/tokens"

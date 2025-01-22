@@ -4,6 +4,7 @@ Feature: Data Generator
     * def contentType = 'application/json'
     * def FakerUtils = Java.type('util.FakerUtils').getFaker()
 
+  @error
   Scenario: Get a non existent reservation using data generator
     # Obtain token
     Given url "http://jwtbuilder.jamiekurtz.com/tokens"

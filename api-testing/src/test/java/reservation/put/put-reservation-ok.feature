@@ -1,5 +1,6 @@
 Feature: Reservation
 
+  @success
   Scenario: Modify an existent reservation
     # Obtain token
     Given url "http://jwtbuilder.jamiekurtz.com/tokens"
