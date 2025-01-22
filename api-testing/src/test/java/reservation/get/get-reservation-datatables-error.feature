@@ -1,4 +1,4 @@
-Feature: Reservation
+Feature: Data Tables
 
   Background:
     * def contentType = 'application/json'
